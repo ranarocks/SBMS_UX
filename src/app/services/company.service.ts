@@ -13,10 +13,10 @@ export class CompanyService {
   }
 
   GetCompanyProfile(){
-    return this._http.get(environment.apiUrl+"company/GetCompanyProfile");
+    return this._http.get("http://ranarocks.azurewebsites.net/"+"company/GetCompanyProfile");
   }
 
   CreateCompany(data){
-    return this._http.post(environment.apiUrl + 'company/create', data);
+    return this._http.post("http://ranarocks.azurewebsites.net/" + 'company/create', data);
   }
 }

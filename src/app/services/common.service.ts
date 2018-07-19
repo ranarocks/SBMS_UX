@@ -18,6 +18,6 @@ apiUrl:string;
   constructor(private http:HttpClient) { }
 
   GetAllStates(){
-    return this.http.get(environment.apiUrl+"common/GetAllStates");
+    return this.http.get("http://ranarocks.azurewebsites.net/"+"common/GetAllStates");
   }
 }

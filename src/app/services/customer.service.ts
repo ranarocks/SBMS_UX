@@ -17,10 +17,10 @@ export class CustomerService {
     // let Params = new HttpParams();
     // Params = Params.append('type',type);
     // Params = Params.append('id',id);
-    return this._http.post(environment.apiUrl+"Customer/GetCustomerList",model);
+    return this._http.post("http://ranarocks.azurewebsites.net/"+"Customer/GetCustomerList",model);
   }
 
   CreateCustomer(data){
-    return this._http.post(environment.apiUrl + 'Customer/CustomerOperation', data);
+    return this._http.post("http://ranarocks.azurewebsites.net/" + 'Customer/CustomerOperation', data);
   }
 }
