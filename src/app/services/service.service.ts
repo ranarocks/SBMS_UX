@@ -32,10 +32,10 @@ getUserInfo(){
 }
 
 updateUserInfo(obj){
-  // return this.store.dispatch({
-  //   type:obj.type,
-  //   userInfo:obj.userInfo
-  // });
+  return this.store.dispatch({
+    type:obj.type,
+    userInfo:obj.userInfo
+  });
 }
 
 }

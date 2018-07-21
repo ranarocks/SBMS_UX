@@ -4,13 +4,14 @@ import { createFeatureSelector } from '@ngrx/store';
 import {ActionReducerMap} from '@ngrx/store'
 
 export interface appReducerState {
-    login:boolean
+    login:string,
+    userInfo:{}
 }
 
 const initalState:appReducerState= {
 
-    login:false
-    // userInfo:{}
+    login:"jatin",
+    userInfo:{}
     //. ..
 }
 
@@ -21,20 +22,21 @@ export function reducer(state=initalState, action):appReducerState
         case ACTION_LOGOUT:
         return{
             ...state,
-            login:false,
-            // userInfo:{}
+            login:"logout",
+            userInfo:{}
         }
         case ACTION_LOGIN:
         return{
             ...state,
-            login:true,
-            // userInfo:{}
+            login:"login",
+            userInfo:{}
         }
         case LOGIN_USERINFO:
+        // const g = action.payload;
         return{
             ...state,
-            login:true,
-            // userInfo:{}
+            login:"userinfo",
+             userInfo:action.userInfo
         };
     }
     return state
