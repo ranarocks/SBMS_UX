@@ -34,10 +34,11 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     debugger;
-
-    // this._services.getUserInfo().subscribe(state=>{
-    //   alert(state+ "pawan");
-    // });
+//appReducer
+   this._services.getUserInfo().subscribe(state=>{
+      console.log("pawan");
+      console.log(state);
+    });
   }
   redirection(){
     this.router.navigate(['umaster/uregistration']);

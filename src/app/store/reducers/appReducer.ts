@@ -7,22 +7,12 @@ export interface appReducerState {
     login:boolean
 }
 
-const initalState:appReducerState={
+const initalState:appReducerState= {
+
     login:false
     // userInfo:{}
     //. ..
 }
-
-interface AppState{
-    appReducer:appReducerState
-}
-
-export const reducers:ActionReducerMap<AppState>={
-    
-    appReducer : reducer
-}
-
-
 
 export function reducer(state=initalState, action):appReducerState
 {
@@ -50,4 +40,4 @@ export function reducer(state=initalState, action):appReducerState
     return state
 }
 
-export const getProductsState = createFeatureSelector<appReducerState>('test');
+// export const getProductsState = createFeatureSelector<State>('test');

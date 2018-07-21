@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
 import {Store} from '@ngrx/store'
-import * as testStore from '../store'
+// import * as testStore from '../store'
 import { Action } from '../../../node_modules/rxjs/internal/scheduler/Action';
 
 @Injectable()
@@ -28,7 +28,7 @@ userAuthentication(userName, password) {
 }
 
 getUserInfo(){
-  return "test";// this.store.select(testStore.getLoginState);
+  return this.store.select("appReducer");
 }
 
 updateUserInfo(obj){

@@ -38,8 +38,7 @@ import { CustomerlistComponent } from './admin/customerlist/customerlist.compone
 import { CustomerService } from './services/customer.service';
 import { CustomerdetailsComponent } from './admin/customerdetails/customerdetails.component';
 import {StoreModule} from '@ngrx/store'
-import {reducer} from './store/reducers/appReducer'
-import {StoreTestModule} from './store/store.module'
+import {reducers} from './store/reducers'
 
 // , canActivate: [AuthGuard]
 @NgModule({
@@ -71,8 +70,8 @@ import {StoreTestModule} from './store/store.module'
     ROUTING,
     HttpClientModule,
     ReactiveFormsModule, 
-    // StoreModule.forFeature("test",reducer),
-    StoreTestModule,
+     StoreModule.forRoot(reducers,{}),
+    // StoreTestModule,
     AgGridModule.withComponents(
       []
   )
