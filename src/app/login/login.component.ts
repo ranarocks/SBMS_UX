@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { service } from '../services/service.service';
 import { UserService } from '../services/user.service';
+import { LOGIN_USERINFO} from '../store/actions/appActions';
 import { debug } from 'util';
 
 @Component({
@@ -32,7 +33,11 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit() {
-    
+    debugger;
+
+    // this._services.getUserInfo().subscribe(state=>{
+    //   alert(state+ "pawan");
+    // });
   }
   redirection(){
     this.router.navigate(['umaster/uregistration']);
@@ -40,6 +45,7 @@ export class LoginComponent implements OnInit {
  
   login() {
     this._services.userAuthentication(this.model.username,this.model.password).subscribe((data : any)=>{
+      debugger;
       localStorage.setItem('userToken',data.access_token);
       localStorage.setItem('userRoles',data.Role);  
       this._UserService.EmployeeDetail.LastLogin = data.LastLogin;  
@@ -47,6 +53,9 @@ export class LoginComponent implements OnInit {
       this._UserService.EmployeeDetail.Username = data.Username;  
       this._UserService.EmployeeDetail.Role = data.Role;  
       this._UserService.EmployeeDetail.StateId = data.StateId; 
+      this._services.updateUserInfo({
+        type:LOGIN_USERINFO,
+        userInfo: this._UserService.EmployeeDetail});
       this.router.navigate(['adminmaster/awelcome']);
     },
     (err : HttpErrorResponse)=>{

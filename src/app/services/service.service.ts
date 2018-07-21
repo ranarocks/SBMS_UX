@@ -4,6 +4,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
+import {Store} from '@ngrx/store'
+import * as testStore from '../store'
+import { Action } from '../../../node_modules/rxjs/internal/scheduler/Action';
 
 @Injectable()
 export class service {
@@ -13,7 +16,7 @@ export class service {
     password:''
   };
 
-constructor(private http:HttpClient) {
+constructor(private http:HttpClient, private store:Store<any>) {
   
  }
 
@@ -24,6 +27,15 @@ userAuthentication(userName, password) {
   return this.http.post("http://ranarocks.azurewebsites.net/" + 'token', data, { headers: reqHeader });
 }
 
+getUserInfo(){
+  return "test";// this.store.select(testStore.getLoginState);
+}
 
+updateUserInfo(obj){
+  // return this.store.dispatch({
+  //   type:obj.type,
+  //   userInfo:obj.userInfo
+  // });
+}
 
 }
