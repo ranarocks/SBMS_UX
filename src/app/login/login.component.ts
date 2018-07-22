@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { service } from '../services/service.service';
 import { UserService } from '../services/user.service';
+import { ACTION_LOGIN} from '../store/actions/appActions';
 import { debug } from 'util';
 
 @Component({
@@ -32,7 +33,11 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit() {
-    
+//appReducer
+  //  this._services.getUserInfo().subscribe(state=>{
+  //     console.log("pawan");
+  //     console.log(state);
+  //   });
   }
   redirection(){
     this.router.navigate(['umaster/uregistration']);
@@ -41,12 +46,15 @@ export class LoginComponent implements OnInit {
   login() {
     this._services.userAuthentication(this.model.username,this.model.password).subscribe((data : any)=>{
       localStorage.setItem('userToken',data.access_token);
-      localStorage.setItem('userRoles',data.Role);  
+      // localStorage.setItem('userRoles',data.Role);  
       this._UserService.EmployeeDetail.LastLogin = data.LastLogin;  
       this._UserService.EmployeeDetail.Name = data.Name; 
       this._UserService.EmployeeDetail.Username = data.Username;  
       this._UserService.EmployeeDetail.Role = data.Role;  
       this._UserService.EmployeeDetail.StateId = data.StateId; 
+      this._services.updateUserInfo({
+        type:ACTION_LOGIN,
+        userInfo: this._UserService.EmployeeDetail});
       this.router.navigate(['adminmaster/awelcome']);
     },
     (err : HttpErrorResponse)=>{

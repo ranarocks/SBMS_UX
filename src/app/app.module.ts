@@ -25,7 +25,6 @@ import { AdmindetailComponent } from './admin/admindetail/admindetail.component'
 import { CompanyListComponent } from './admin/company-list/company-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { AuthGuard } from './auth.guard';
 import { AuthInterceptor } from './auth.interceptor';
 import { service } from './services/service.service';
@@ -37,10 +36,9 @@ import {  RouterModule } from '@angular/router';
 import { ShowErrorsComponent } from './common/show-errors/show-errors.component';
 import { CustomerlistComponent } from './admin/customerlist/customerlist.component';
 import { CustomerService } from './services/customer.service';
-
 import { CustomerdetailsComponent } from './admin/customerdetails/customerdetails.component';
-
-
+import {StoreModule} from '@ngrx/store'
+import {reducers} from './store/reducers'
 
 // , canActivate: [AuthGuard]
 @NgModule({
@@ -72,6 +70,8 @@ import { CustomerdetailsComponent } from './admin/customerdetails/customerdetail
     ROUTING,
     HttpClientModule,
     ReactiveFormsModule, 
+     StoreModule.forRoot(reducers,{}),
+    // StoreTestModule,
     AgGridModule.withComponents(
       []
   )
