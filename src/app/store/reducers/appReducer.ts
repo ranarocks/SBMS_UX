@@ -1,42 +1,31 @@
 import {ACTION_LOGOUT, ACTION_LOGIN, LOGIN_USERINFO} from '../actions/appActions';
-import { UserService } from '../../services/user.service';
-import { createFeatureSelector } from '@ngrx/store';
-import {ActionReducerMap} from '@ngrx/store'
 
 export interface appReducerState {
-    login:string,
+    login:boolean,
     userInfo:{}
 }
 
 const initalState:appReducerState= {
 
-    login:"jatin",
+    login:false,
     userInfo:{}
     //. ..
 }
 
 export function reducer(state=initalState, action):appReducerState
 {
-    debugger
     switch(action.type){
         case ACTION_LOGOUT:
         return{
             ...state,
-            login:"logout",
+            login:false,
             userInfo:{}
         }
         case ACTION_LOGIN:
         return{
             ...state,
-            login:"login",
-            userInfo:{}
-        }
-        case LOGIN_USERINFO:
-        // const g = action.payload;
-        return{
-            ...state,
-            login:"userinfo",
-             userInfo:action.userInfo
+            login:true,
+            userInfo:action.userInfo
         };
     }
     return state

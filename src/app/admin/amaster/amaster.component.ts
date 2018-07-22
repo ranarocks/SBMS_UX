@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { service } from '../../services/service.service';
 import {Store} from '@ngrx/store';
+import { ACTION_LOGOUT } from '../../store/actions/appActions';
 @Component({
   selector: 'app-amaster',
   templateUrl: './amaster.component.html',
@@ -19,13 +20,9 @@ currentuserDetail:Object;
   }
 
   ngOnInit() {
-    debugger
-    this.currentUser = this._UserService.getUserLoggedIn().Name;
-    // this.currentuserDetail=this._service.getUserInfo();
-    // console.log(this.currentuserDetail);
-    // this._service.getUserInfo().subscribe(state=>{
-    //   console.log(state);
-    // });
+    this._service.getUserInfo().subscribe(state=>{
+      this.currentUser = state.userInfo.Name;
+    });
 
   }
 
@@ -49,7 +46,10 @@ currentuserDetail:Object;
 
   }
   logout() {
-    localStorage.removeItem('userToken');
+    this._service.updateUserInfo({
+      type:ACTION_LOGOUT,
+      userInfo: {}
+    });
     this.router.navigate(['/']);
   }
 }

@@ -28,6 +28,7 @@ customerInput: any = {};
     this.router.navigate(['adminmaster/Customerdetails']);
   }
   ngOnInit() {
+    debugger
     this.customerInput.type=1;
     this.customerInput.Active=1;
     this._customerService.GetCustomerList(this.customerInput).subscribe(apidata=>{
