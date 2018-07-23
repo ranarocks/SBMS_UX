@@ -10,6 +10,6 @@ export class CommonService {
   constructor(private http:HttpClient) { }
 
   GetAllStates(){
-    return this.http.get(environment+"common/GetAllStates");
+    return this.http.get(environment.APIurl+"common/GetAllStates");
   }
 }

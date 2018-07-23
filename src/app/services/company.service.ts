@@ -13,10 +13,10 @@ export class CompanyService {
   }
 
   GetCompanyProfile(){
-    return this._http.get(environment+"company/GetCompanyProfile");
+    return this._http.get(environment.APIurl+"company/GetCompanyProfile");
   }
 
   CreateCompany(data){
-    return this._http.post(environment + 'company/create', data);
+    return this._http.post(environment.APIurl + 'company/create', data);
   }
 }
